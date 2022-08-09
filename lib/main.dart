@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'quates.dart';
-import 'quate_card.dart';
+import 'quotes.dart';
+import 'quote_card.dart';
 
 void main() => runApp(MaterialApp(
   home:Home(),
@@ -16,12 +16,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<Quate> quotes = [
-    Quate(text: "never fall in love with anyone. never fall in love with anyone", author: "shamsul haq "),
-    Quate(text: "never fall in love with self. never fall in love with anyone", author: "shamsul haq"),
-    Quate(text: "never fall in love with self. never fall in love with anyone", author: "shamsul haq"),
-    Quate(text: "never fall in love with self. never fall in love with anyone", author: "shamsul haq"),
-    Quate(text: "never fall in love with country. never fall in love with anyone", author: "shamsul haq")
+  List<Quote> quotes = [
+    Quote(text: "never fall in love with anyone. never fall in love with anyone", author: "shamsul haq "),
+    Quote(text: "never fall in love with self. never fall in love with anyone", author: "shamsul haq"),
+    Quote(text: "never fall in love with country. never fall in love with anyone", author: "shamsul haq")
   ];
 
 
@@ -35,7 +33,14 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.grey[800],
       ),
       body: Column(
-        children: quotes.map((quate) => CardWidget(quate: quate,)).toList(),
+        children: quotes.map((quote) => CardWidget(
+          quote: quote,
+          delete: (){
+            setState(() {
+              quotes.remove(quote);
+            });
+          },
+        )).toList(),
       ),
     );
   }
